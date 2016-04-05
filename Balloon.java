@@ -12,8 +12,13 @@ class Balloons {
 	
 	public static int getMinBalloons() {
 		int t;
-		t = R+G+B;
-		return fact(t)/(fact(t-K)*fact(K));
+		if (K==1)
+			return 1;
+		else
+		{
+			t= fact(R)/(fact(R-K)*fact(K)) + fact(G)/(fact(G-K)*fact(K)) + fact(B)/(fact(B-K)*fact(K));
+			return t;
+		}
 	}
 	
 	public static void main(String[]args) {
