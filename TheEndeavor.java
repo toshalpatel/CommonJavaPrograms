@@ -1,3 +1,4 @@
+//creating a database for a magazine subscription
 import javax.swing.*;
 import java.awt.event.*;
 import java.sql.*;
