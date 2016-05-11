@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-class TheEndeavor {
+class Subscripton {
 	public static void main(String[] args) {
 		Subscribe s = new Subscribe();
 	}
