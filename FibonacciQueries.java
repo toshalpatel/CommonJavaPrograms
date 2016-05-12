@@ -5,7 +5,7 @@ public class FibonacciQueries {
 	static int[] A;
 	static int N;
 	
-	public static long fibonacci(int k){
+	public static long fibonacci(long k){
 		long a=0,b=1;
 		for(int i=0;i<k;i++){
 			f=a+(b);
@@ -15,15 +15,27 @@ public class FibonacciQueries {
 		return f;
 	}
 	
-	public static long sum(int[] b){
+	public static long sum(long[] b){
 		long s=0;
 		for(int i=0;i<b.length;i++)
 			s=s+b[i];
 		return s;
 	}
 	
-	public static void F(int i, int j){
-		// F function
+	public static long F(int i, int j){
+		long[] si = new long[j-i];
+		int a=0;
+		long s,fi,fs=0;
+		for(int c=i;c<j-i;c++){
+			si[a] = A[c];
+			a++;
+		}
+		s=sum(si);
+		for(int c=0; c<s ; c++) {
+			fi=fibonacci(s);
+			fs=fs+fi;
+		}
+		return (fs%000000007);
 	}
 	
 	public static void executeQuery(char Q, int i, int j){
