@@ -35,12 +35,12 @@ public class FibonacciQueries {
 			fi=fibonacci(s);
 			fs=fs+fi;
 		}
-		return (fs%000000007);
+		return (fs%1000000007);
 	}
 	
 	public static void executeQuery(char Q, int i, int j){
 		if (Q=='Q')
-			F(i,j);
+			System.out.println(F(i,j));
 		else
 			A[i]=j;
 	}
