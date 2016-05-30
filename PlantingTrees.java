@@ -8,6 +8,7 @@ public class PlantingTrees {
 			if(T<=40000 && T>=1){
 				int flag;//size of the array
 				int N;
+				
 				do {
 					N = in.nextInt();
 					if(N>=2 && N<=100000){
@@ -19,6 +20,7 @@ public class PlantingTrees {
 						flag=1;
 					}
 				}while(flag==1);
+				
 				int[] A = new int[N];//(A[i],A[j]) gives the coordinates of trees
 				int sum=0;
 				for(int j=0;j<N;j++){
