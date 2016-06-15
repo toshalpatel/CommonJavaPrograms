@@ -26,6 +26,12 @@ public class CBalls {
 		return B;
 	}
 	
+	static int hammingDistance(int[] A){
+		int HD = 0;
+		return HD;
+	}
+	
+	
 	static int[] numberToBinary(int A, int N){
 		int[] B = null;
 		int[] BT = null;
