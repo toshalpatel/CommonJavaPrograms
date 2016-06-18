@@ -58,7 +58,7 @@ public class CBalls {
 		return hammingDistance(x, z) + hammingDistance(y,z);
 	}
 	
-	static String getString(int[][] A,int index,int N){
+	static String getString(int[][] A, int index, int N){
 		String Z;
 		String[] B=null;
 		for(int i=1; i<=N; i++){
@@ -105,7 +105,7 @@ public class CBalls {
 				z[j][N] = b;
 			}
 			
-			int index;
+			int index=0;
 			//finding greatest hamming distance
 			for(int k=1; k<N; k++){
 				int s=0;
@@ -115,7 +115,7 @@ public class CBalls {
 				}
 			}
 			
-			String Z = getString(z[index][N], index, N);
+			String Z = getString(z, index, N);
 			System.out.println(Z);
 		}
 	}
