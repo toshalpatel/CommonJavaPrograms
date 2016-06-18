@@ -31,7 +31,6 @@ public class CBalls {
 		return HD;
 	}
 	
-	
 	static int[] numberToBinary(int A, int N){
 		int[] B = null;
 		int[] BT = null;
@@ -42,9 +41,34 @@ public class CBalls {
 			BT[i] = T%2;
 			C = T/2;
 		}
-		for (int i=1, j=N; i<=N; i++, j--)
+		for (int i=1; i<=N; i++)
 			B[i] = BT[N];
 		return B;
+	}
+	
+	static int hammingDistance(int[] a, int[] b){
+		int d=0;
+		for(int i=1; i<=a.length; i++)
+			if(a[i]!=b[i])
+				d++;
+		return d;
+	}
+	
+	static int getHammingDistance(int[] x, int[] y, int[] z){
+		return hammingDistance(x, z) + hammingDistance(y,z);
+	}
+	
+	static String getString(int[][] A,int index,int N){
+		String Z;
+		String[] B=null;
+		for(int i=1; i<=N; i++){
+			if(A[index][i] == 1)
+				B[i] = "W";
+			else if(A[index][i] == 0)
+				B[i] = "B";
+		}
+		Z = B.toString();
+		return Z;
 	}
 	
 	public static void main(String[] args){
@@ -68,12 +92,31 @@ public class CBalls {
 			xb = stringToBinary(x, N);
 			yb = stringToBinary(y, N);
 			
+			int[] dist = null;
+			int[][] z=null;
+			
 			//loop for random values of Z
 			for(int j=1; j<=N; j++){
 				int zn = r.nextInt(getEndRandomNumber(N));//nextInt returns 0(inclusive) to N(exclusive)
 				zb = numberToBinary(zn, N);
-				//compare hd
+				dist[j] = getHammingDistance(xb,yb,zb);
+				//store each z in an array
+				for(int b:zb)
+				z[j][N] = b;
 			}
+			
+			int index;
+			//finding greatest hamming distance
+			for(int k=1; k<N; k++){
+				int s=0;
+				if(s<dist[k]){
+					s=dist[k];
+					index = k;
+				}
+			}
+			
+			String Z = getString(z[index][N], index, N);
+			System.out.println(Z);
 		}
 	}
 }
