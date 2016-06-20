@@ -14,7 +14,7 @@ public class CBalls {
 	}
 	
 	static int[] stringToBinary(String[] A, int limit){
-		int[] B = null;
+		int[] B = new int[limit];
 		for(int i=1; i<=limit; i++){
 			if(A[i].equalsIgnoreCase("B")){
 				B[i] = 0;
@@ -32,8 +32,8 @@ public class CBalls {
 	}
 	
 	static int[] numberToBinary(int A, int N){
-		int[] B = null;
-		int[] BT = null;
+		int[] B = new int[N];
+		int[] BT = new int[N];
 		int C = A;
 		int T;
 		for(int i=1; i<=N; i++){
@@ -60,7 +60,7 @@ public class CBalls {
 	
 	static String getString(int[][] A, int index, int N){
 		String Z;
-		String[] B=null;
+		String[] B = new String[index];
 		for(int i=1; i<=N; i++){
 			if(A[index][i] == 1)
 				B[i] = "W";
@@ -81,7 +81,8 @@ public class CBalls {
 			String Y = in.next();
 			int N = X.length();
 			int hd, kx=0, ky=0;
-			String[] x = null, y = null;
+			String[] x = new String[N];
+			String[] y = new String[N];
 			for(int j=1; j<=N; j++){
 				x[kx++] = X.substring(j, j+1);
 				y[ky++] = Y.substring(j, j+1);
@@ -92,8 +93,8 @@ public class CBalls {
 			xb = stringToBinary(x, N);
 			yb = stringToBinary(y, N);
 			
-			int[] dist = null;
-			int[][] z=null;
+			int[] dist = new int[N];
+			int[][] z= new int[N][N];
 			
 			//loop for random values of Z
 			for(int j=1; j<=N; j++){
