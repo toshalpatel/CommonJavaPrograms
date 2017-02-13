@@ -36,7 +36,7 @@ public class ProcessSc {
             int s = C[i].pprofit;
             for(int j=i+1;j<n;j++){
                 if(s<C[j].pprofit){
-                    Class t = C[i];
+                    ProcessSc t = C[i];
                     C[i]=C[j];
                     C[j]= t;
                 }
