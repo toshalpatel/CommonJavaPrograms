@@ -64,11 +64,14 @@ public class ProcessSc {
         }
         System.out.println("Total profit: "+profit);
         System.out.println("Completed processes:");
+        int i=0;
         for(String v: completed){
-            if(v != "#")
+            if(v != "#") {
                 System.out.println(v);
+                i++;
+            }
             else 
-                System.out.println("Deadline missed, process: " + v);
+                System.out.println("Deadline missed, process: " + C[i].process);
         }
     }
 }
