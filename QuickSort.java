@@ -36,8 +36,8 @@ public class QuickSort {
             if (i <= j) {
                 exchangeNumbers(i, j);
                 //move index to next position on both sides
-                i++;
-                j--;
+                i++;//starts from left to the position till i < j
+                j--;// starts from right
             }
         }
         // call quickSort() method recursively
