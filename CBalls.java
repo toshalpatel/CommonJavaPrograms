@@ -31,6 +31,7 @@ public class CBalls {
 		return HD;
 	}
 	
+	
 	static int[] numberToBinary(int A, int N){
 		int[] B = new int[N];
 		int[] BT = new int[N];
