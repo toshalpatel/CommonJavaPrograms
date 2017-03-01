@@ -4,10 +4,10 @@ public class EditDist {
     public static void main(String[] args) {
         
         System.out.print("Enter string A: ");
-        System.out.print("Enter string B: ");
-        
         Scanner in = new Scanner(System.in);
         String A = in.next();
+        
+        System.out.print("Enter string B: ");
         String B = in.next();
         
         int m = A.length();
