@@ -44,8 +44,10 @@ public class EditDist {
             }
         }
         
-        for(int v=0; v<k; v++)
+        for(int v=0; v<k; v++) {
             for(int u=0; u<k; u++)
-                System.out.println(cost[v][u]+"\t");
+                System.out.print(cost[v][u]+"\t");
+            System.out.print("\n");
+        }
     }
 }
