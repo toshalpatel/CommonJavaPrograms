@@ -49,5 +49,7 @@ public class EditDist {
                 System.out.print(cost[v][u]+"\t");
             System.out.print("\n");
         }
+        
+        System.out.println("the edit distance to convert B to A is: "+cost[k][k]);
     }
 }
