@@ -50,6 +50,6 @@ public class EditDist {
             System.out.print("\n");
         }
         
-        System.out.println("the edit distance to convert B to A is: "+cost[k][k]);
+        System.out.println("The edit distance to convert B to A is: "+cost[k][k]);
     }
 }
