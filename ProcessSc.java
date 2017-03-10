@@ -48,7 +48,7 @@ public class ProcessSc {
             System.out.println(C[i].process+"\t"+C[i].execution+"\t"+C[i].deadline+"\t"+C[i].pprofit);
         }
         
-        //scheduling
+        //scheduling of the processes
         String[] completed = new String[n];
         for(int i = 0; i<n; i++)
             completed[i] = "#";
