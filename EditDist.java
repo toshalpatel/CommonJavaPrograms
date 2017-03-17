@@ -51,5 +51,8 @@ public class EditDist {
         }
         
         System.out.println("The edit distance to convert B to A is: "+cost[k][k]);
+        
+        //for calculating the insert delete update query fired.
+        //...
     }
 }
