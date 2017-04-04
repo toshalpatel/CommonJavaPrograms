@@ -72,21 +72,10 @@ public class Node implements Comparable<Node>{
 	}
 	
 
-	
-	/**
-	 * Hn getter
-	 * @return
-	 */
 	public int getHeuristic(){
 		return hn;
 	}
 	
-	/**
-	 * Implements Comparable method compareTo, judges a comparison
-	 * on the basis of a Node's heuristic value
-	 * @param n
-	 * @return int
-	 */
 	public int compareTo(Node n){
 		if(this.hn < n.getHeuristic())
 			return -1;
@@ -106,19 +95,10 @@ public class Node implements Comparable<Node>{
 		}
 	}
 	
-	
-	/**
-	 * state getter
-	 * @return
-	 */
 	public Queen[] getState(){
 		return state;
 	}
 	
-	/**
-	 * toString method prints out Node's state
-	 * @return String
-	 */
 	public String toString(){
 		String result="";
 		String[][] board = new String[N][N];
