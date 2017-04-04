@@ -1,8 +1,4 @@
-/**
- * @file Node.java
- * @author Natasha Squires <nsquires@upei.ca>
- * Represents a Queen
- */
+
 import java.util.*;
 
 public class Node implements Comparable<Node>{
@@ -11,18 +7,11 @@ public class Node implements Comparable<Node>{
 	private ArrayList<Node> neighbours;
 	private int hn; //heuristic score
 	
-	/**
-	 * Constructor
-	 */
 	public Node(){
 		state = new Queen[N]; //empty state
 		neighbours = new ArrayList<Node>(); //empty neighbour list
 	} 
 	
-	/**
-	 * Constructor which creates a copy of a node's state
-	 * @param n
-	 */
 	public Node(Node n){
 		state = new Queen[N];
 		neighbours = new ArrayList<Node>();
@@ -31,20 +20,11 @@ public class Node implements Comparable<Node>{
 		hn=0;
 	}
 	
-	/**
-	 * Generates the possible chess board configurations given a
-	 * specific board state
-	 * @param startState
-	 */
 	public ArrayList<Node> generateNeighbours(Node startState){
 		int count=0;
 		
 		if(startState==null)
 			System.out.println("warning");
-		else{
-	//		System.out.println("hmm?");
-		//	System.out.println(startState);
-		}
 		
 		for(int i=0; i<N; i++){
 			for(int j=1; j<N; j++){
@@ -60,11 +40,6 @@ public class Node implements Comparable<Node>{
 		return neighbours;
 	}
 	
-	/**
-	 * Returns a randomly generated neighbour of a given state
-	 * @param startState
-	 * @return
-	 */
 	public Node getRandomNeighbour(Node startState){
 		Random gen = new Random();
 		
