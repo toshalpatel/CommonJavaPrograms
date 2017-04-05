@@ -1,28 +1,14 @@
-/**
- * @file Queen.java
- * @author nsquires
- * A Queen chess piece
- */
+
 
 public class Queen {
 	private int row;
 	private int column;
 	
-	/**
-	 * Constructor. Sets Queen's row and column
-	 * @param r
-	 * @param c
-	 */
 	public Queen(int r, int c){
 		row = r;
 		column  = c;
 	}
 	
-	/**
-	 * Determines whether this queen can attack another 
-	 * @param q
-	 * @return boolean
-	 */
 	public boolean canAttack(Queen q){
 		boolean canAttack=false;
 		
@@ -36,10 +22,6 @@ public class Queen {
 		return canAttack;
 	}
 	
-	/**
-	 * moves the piece down
-	 * @param spaces
-	 */
 	public void moveDown(int spaces){
 		row+=spaces;
 		
@@ -52,34 +34,18 @@ public class Queen {
 		}
 	}
 	
-	/**
-	 * row setter
-	 * @param r
-	 */
 	public void setRow(int r){
 		row = r;
 	}
 	
-	/**
-	 * row getter
-	 * @return int
-	 */
 	public int getRow(){
 		return row;
 	}
 	
-	/**
-	 * column setter
-	 * @param c
-	 */
 	public void setColumn(int c){
 		column = c;
 	}
 	
-	/**
-	 * column getter
-	 * @return int
-	 */
 	public int getColumn(){
 		return column;
 	}
