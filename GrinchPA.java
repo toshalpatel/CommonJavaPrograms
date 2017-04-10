@@ -1,5 +1,3 @@
-package grinch;
-
 import java.util.Arrays;
 
 public class GrinchPA {
