@@ -1,12 +1,7 @@
+//min no of ways to kind k same color balloons
 import java.util.Scanner;
 class Balloons {
 	static int R, G, B, K;
-	
-	public static int combination() {
-		int t;
-		t = R+G+B;
-		return fact(t)/(fact(t-K)*K);
-	}
 	
 	public static int fact(int k) {
 		if (k==1)
@@ -16,7 +11,14 @@ class Balloons {
 	}
 	
 	public static int getMinBalloons() {
-		return combination();
+		int t;
+		if (K==1)
+			return 1;
+		else
+		{
+			t= fact(R)/(fact(R-K)*fact(K)) + fact(G)/(fact(G-K)*fact(K)) + fact(B)/(fact(B-K)*fact(K));
+			return t;
+		}
 	}
 	
 	public static void main(String[]args) {
