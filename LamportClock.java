@@ -63,8 +63,11 @@ public class LamportClock{
             P[i].getEvents();
             P[i].initializeEvent();
         }
+        
+        //calculating clocks
         for(int i=0; i<n; i++)
             getClock(P[i]);
+        
         for(int i=0; i<n; i++){
             System.out.println("Process "+(i+1));
             for(int j=0; j<P[i].ne; j++){
