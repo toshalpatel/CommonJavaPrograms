@@ -53,8 +53,8 @@ public class LamportClock{
     }
     
     public static void main(String[] args){
-        System.out.println("Enter the number of processes:");
         in = new Scanner(System.in);
+        System.out.println("Enter the number of processes:");
         n = in.nextInt();
         P = new Process[n];
         P[1] = new Process();
