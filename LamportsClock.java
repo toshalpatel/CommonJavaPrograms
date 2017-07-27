@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class LamportClock{
+public class LamportsClock{
     
     static Scanner in;
     static int n;
