@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class LamportsClock{
+public class LamportClock{
     
     static Scanner in;
     static int n;
@@ -12,10 +12,9 @@ public class LamportsClock{
     
         public void getEvents(){
             System.out.println("Enter the number of events in process:");
-            for(int i=0; i<n; i++){
-                System.out.print("P"+(i+1)+": ");
-                ne = in.nextInt();
-            }
+            ne = in.nextInt();
+            
+            c = new int[ne];
             e = new int[ne];
             System.out.println("Enter the event matrix:");
             for(int j=0; j<ne; j++){
@@ -23,9 +22,9 @@ public class LamportsClock{
             }
         }
         
-        public void initializeEvent(){;
+        public void initializeEvent(int limit){;
             e[0]=0;
-            for(int i=0; i<ne; i++)
+            for(int i=0; i<limit; i++)
                 c[i]=0;
         }
     }
@@ -38,12 +37,12 @@ public class LamportsClock{
                 else{
                     int l,k;
                     l = Q.e[j] % 10;
-                    k = Q.e[j] - l*10;
-                    if(P[l].c[k] == 0 && k!=0)
-                        getClock(P[l]);
+                    k = Q.e[j] / 10;
+                    if(P[k-1].c[l-1] == 0 && k!=0)
+                        getClock(P[k-1]);
                     else{
-                        if(P[l].c[k] > Q.c[j-1])
-                            Q.c[j] = P[l].e[k] + 1;
+                        if(P[k-1].c[l-1] > Q.c[j-1])
+                            Q.c[j] = P[k-1].e[l-1] + 1;
                         else
                             Q.c[j] = Q.e[j] + 1;
                     }
@@ -53,27 +52,24 @@ public class LamportsClock{
     }
     
     public static void main(String[] args){
-        in = new Scanner(System.in);
+    	LamportClock lc = new LamportClock();
         System.out.println("Enter the number of processes:");
+        in = new Scanner(System.in);
         n = in.nextInt();
         P = new Process[n];
-        P[1] = new Process();
         for(int i=0; i<n; i++){
-            System.out.println("Process P"+(i+1)+": ");
+            P[i] = lc.new Process();
             P[i].getEvents();
-            P[i].initializeEvent();
+            P[i].initializeEvent(P[i].ne);
         }
-        
-        //calculating clocks
         for(int i=0; i<n; i++)
             getClock(P[i]);
-        
+        System.out.println("The Lamport Clock results as:");
         for(int i=0; i<n; i++){
-            System.out.println("Process "+(i+1));
-            for(int j=0; j<P[i].ne; j++){
-                System.out.print(P[i].c[j]+"\t");
-            }
-            System.out.print("\n");
+            System.out.print("P"+(i+1)+": ");
+            for(int j=0; j<P[i].ne; j++)
+                System.out.print(P[i].c[j]+" ");
+            System.out.println();
         }
     }
 }
