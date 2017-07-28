@@ -9,7 +9,7 @@ public class LamportClock{
     public class Process{
         int ne;
         int[] e,c;
-    
+        int[] visited;
         public void getEvents(){
             System.out.println("Enter the number of events in process:");
             ne = in.nextInt();
@@ -24,27 +24,37 @@ public class LamportClock{
         
         public void initializeEvent(int limit){;
             e[0]=0;
-            for(int i=0; i<limit; i++)
+            visited = new int[ne];
+            for(int i=0; i<limit; i++){
                 c[i]=0;
+                visited[i] = 0;
+            }
         }
     }
     
     static void getClock(Process Q){
-        for (int i=0;i<n;i++){
-            for (int j=1; j<Q.ne; j++){
-                if(Q.e[j]==0)
-                    Q.c[j] = Q.e[j-1] + 1;
-                else{
+        for (int j=1; j<Q.ne; j++){
+            
+            if(Q.e[j]==0 && Q.visited[j] == 0){
+                Q.c[j] = Q.e[j-1] + 1;
+                Q.visited[j] = 1;
+            }
+            else{
+                if (Q.visited[j] == 0){
                     int l,k;
                     l = Q.e[j] % 10;
                     k = Q.e[j] / 10;
                     if(P[k-1].c[l-1] == 0 && k!=0)
                         getClock(P[k-1]);
                     else{
-                        if(P[k-1].c[l-1] > Q.c[j-1])
+                        if(P[k-1].c[l-1] > Q.c[j-1]){
                             Q.c[j] = P[k-1].e[l-1] + 1;
-                        else
+                            Q.visited[j] = 1;
+                        }
+                        else{
                             Q.c[j] = Q.e[j] + 1;
+                            Q.visited[j] = 1;
+                        }
                     }
                 }
             }
@@ -62,8 +72,11 @@ public class LamportClock{
             P[i].getEvents();
             P[i].initializeEvent(P[i].ne);
         }
+        
+        P[0].c[0] = 1;
         for(int i=0; i<n; i++)
             getClock(P[i]);
+
         System.out.println("The Lamport Clock results as:");
         for(int i=0; i<n; i++){
             System.out.print("P"+(i+1)+": ");
