@@ -7,6 +7,7 @@ class Process{
     int pid, ts, requests = 0, replies =0;
     ArrayList<Integer> R = new ArrayList<>();
     ArrayList<Integer> Reply = new ArrayList<>();
+    ArrayList<Integer> Deferred = new ArrayList<>();
     boolean req;
     
     public Process(int pid){
@@ -25,10 +26,10 @@ class Process{
     
 }
 
-public class RickartAgrawal {
+public class RickartAgrawala {
     
     static int n;
-    static Process[] p;
+    static Process[] p = null;
     
     static void initRA(int cspid, int rpid){
         System.out.println("Process P" + cspid + " is in CS");
@@ -41,12 +42,17 @@ public class RickartAgrawal {
                 System.out.println("REPLY from P"+(i+1)+" to P"+rpid);
                 p[rpid-1].addReply(i+1);
             }
-            else
+            else{
                 System.out.println("REQUEST deferred from P"+(i+1));
+                p[rpid-1].Deferred.add(i);
+            }
         }
         
         if(p[cspid].replies == (n-1))
             executeCS(rpid);
+        
+        for (int i=0; i<p[rpid-1].Deferred.size(); i++)
+            System.out.println("REPLY from P"+rpid+" to P"+p[rpid-1].Deferred.get(i));
     }
     
     static void executeCS(int pid){
