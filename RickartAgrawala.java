@@ -9,9 +9,17 @@ class Process{
     ArrayList<Integer> Reply = new ArrayList<>();
     ArrayList<Integer> Deferred = new ArrayList<>();
     boolean req;
+    Thread t ;
+    
+    
+    public Process(){
+        
+    }
     
     public Process(int pid){
         this.pid = pid;
+        t = new Thread();
+        t.start();
     }
     
     void addReply(int pid){
@@ -26,14 +34,13 @@ class Process{
     
 }
 
-public class RickartAgrawala {
+public class RickartAgrawala implements Runnable {
     
-    static int n;
-    static Process[] p = null;
+    static int n=0;
+    static Process[] p;
+    static int cspid, rpid;
     
-    static void initRA(int cspid, int rpid){
-        System.out.println("Process P" + cspid + " is in CS");
-        System.out.println("Process P"+rpid+ " is requesting CS");
+    public void run(){
         
         int ts = request(p[rpid-1], rpid);
         
@@ -72,25 +79,32 @@ public class RickartAgrawala {
         return ts;
     }
     
+   
     public static void main(String[] args){
         
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the number of processes: ");
         n = in.nextInt();
-        
+        p = new Process[n];
         for(int i=0; i<n ; i++){
             p[i] = new Process(i+1);
         }
         
         System.out.print("Enter the process id of process in critical section: ");
-        int cspid = in.nextInt() - 1;
+        int cspid = in.nextInt();
         System.out.print("Enter its timestamp: ");
         p[cspid-1].ts = in.nextInt();
-        
-        System.out.print("Enter the requestng process: ");
-        int rpid = in.nextInt() - 1;
-        
         System.out.println("Rickart - Agrawala DMX Algo...\n");
-        initRA(cspid,rpid);
+        System.out.print("Enter the requestng process: ");
+        rpid = in.nextInt();
+        
+        RickartAgrawala ra = new RickartAgrawala();
+        ra.start();
     }
+
+    private void start() {
+        System.out.println("Process P" + cspid + " is in CS");
+        System.out.println("Process P"+rpid+ " is requesting CS");
+    }
+
 }
