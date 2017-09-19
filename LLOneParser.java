@@ -54,6 +54,21 @@ public class LLOneParser {
     }
     
     static void calcFollow(char t) {
+        String tp = null;
+        char[] p = null;
+        int l=0;
+        for(int i=0; i<n; i++){
+            String ntp = production.get(i);
+            l = ntp.length();
+            p = new char[l];
+            p = ntp.toCharArray();
+            if(p[0] == t)
+                tp = ntp;
+        }
+        if(nonT.contains(p[3])){
+            Tuple<Character, Character> t1 = new Tuple<>(t,p[3]);
+            FIRST.add(t1);
+        }
     }
     
     public static void main(String[] args){
