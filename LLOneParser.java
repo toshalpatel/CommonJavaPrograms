@@ -47,7 +47,8 @@ public class LLOneParser {
             if(p[0] == t)
                 tp = ntp;
         }
-        if(nonT.contains(p[3])){
+        
+        if(nonT.contains(p[3])) {
             Tuple<Character, Character> t1 = new Tuple<>(t,p[3]);
             FIRST.add(t1);
         }
@@ -65,7 +66,8 @@ public class LLOneParser {
             if(p[0] == t)
                 tp = ntp;
         }
-        if(nonT.contains(p[3])){
+        
+        if(nonT.contains(p[3])) {
             Tuple<Character, Character> t1 = new Tuple<>(t,p[3]);
             FIRST.add(t1);
         }
