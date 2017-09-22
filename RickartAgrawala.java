@@ -75,7 +75,6 @@ public class RickartAgrawala implements Runnable {
         for (int i=0; i<n && i!=(rpid-1); i++){
             p[i].addRequest(rpid);
         }
-        
         return ts;
     }
     
