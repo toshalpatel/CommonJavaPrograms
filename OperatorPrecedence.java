@@ -14,9 +14,7 @@ public class OperatorPrecedence {
         Grammer = new ArrayList<>();
         terminals = new ArrayList<>();
         nonterminals = new ArrayList<>();
-       
-       
-       
+        
         int n;
         char startterminal;
        
@@ -164,5 +162,4 @@ public class OperatorPrecedence {
             System.out.println("");
         }
     }
-   
 }
