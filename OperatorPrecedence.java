@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class OperatorPre {
+public class OperatorPrecedence {
 
     static ArrayList<String> Grammer;
     static ArrayList<Character> terminals,nonterminals;
