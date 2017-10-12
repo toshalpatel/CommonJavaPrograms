@@ -33,9 +33,7 @@ public class Proc extends Thread {
     }
 }
 
-import java.util.Scanner;
-
-public class RicartA {
+public class RicartAgrawalaNew {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         
