@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package ashish;
 
-/**
- *
- * @author rcoem
- */
 public class Proc extends Thread {
 
     static int[] cs,request,ts;
@@ -41,24 +31,10 @@ public class Proc extends Thread {
     public Proc(int id) {
         this.id = id;
     }
-    
-    
-    
 }
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package ashish;
 
 import java.util.Scanner;
 
-/**
- *
- * @author rcoem
- */
 public class RicartA {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -100,7 +76,7 @@ public class RicartA {
 }
 
 
-
+/*
 Output:-
 
 Enter the total number of processes..!!
@@ -129,3 +105,4 @@ Timestamp of process  0 is 0
 Timestamp of process  1 is 999
 Timestamp of process  2 is 1
 BUILD SUCCESSFUL (total time: 3 seconds)
+*/
