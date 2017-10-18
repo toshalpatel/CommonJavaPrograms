@@ -73,8 +73,6 @@ public class BankingTransactions {
         SavingsAccount account1 = new SavingsAccount(4653.8, 8);        
         SavingsAccount account2 = new SavingsAccount(4765.8, 8);
         Thread t1 = new Thread();
-        Thread t2 = new Thread();
-        
-        
+        Thread t2 = new Thread();        
     }
 }
