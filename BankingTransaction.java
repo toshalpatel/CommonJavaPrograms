@@ -58,7 +58,19 @@ public class BankingTransactions {
  
     public int customer2(int amt) {
         lock.lock();
- 
+
+        try {
+            accBal += amt;
+            System.out.println("Adding $"+amt);
+        } finally {
+            lock.unlock();
+        }
+        return 0;
+    }
+    
+    public int customer3(int amt) {
+        lock.lock();
+
         try {
             accBal += amt;
             System.out.println("Adding $"+amt);
