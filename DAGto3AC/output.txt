@@ -1,0 +1,13 @@
+run:
+node.value sub t4
+node.value add t1
+node.value sub t3
+node.value add t2
+MOV c R1
+ADD d R1
+MOV e R2
+SUB R1 R2
+MOV a R1
+ADD b R1
+SUB R1 R2
+BUILD SUCCESSFUL (total time: 0 seconds)
