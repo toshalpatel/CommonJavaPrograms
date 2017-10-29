@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class lrParser {
+public class LL1Parser {
    static String a[][];
    static int state[];
    static String tab[][];
