@@ -1,90 +1,81 @@
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
-class SavingsAccount
-{
-    private double balance;
-    private double interest;
+import java.util.Scanner;
 
-    public SavingsAccount()
-    {
-        balance = 0;
-        interest = 0;
+class Account {
+
+    private int bal, newbal;
+
+    public Account(int b) {
+        bal = b;
     }
 
-    public SavingsAccount(double initialBalance, double initialInterest)
-    {
-        balance = initialBalance;
-        interest = initialInterest;
+    synchronized public int getBalance() {
+        return bal;
     }
 
-    public void deposit(double amount)
-    {
-        balance = balance + amount;
+    synchronized public void withdraw(int w) {
+        int b = getBalance();
+        {
+            if (w <= b) {
+                bal = bal - w;
+                newbal = bal;
+            } else {
+                System.out.println("NOT ENOUGH BALANCE\n" + Thread.currentThread().getName() + " cannot withdraw money");
+                System.exit(0);
+            }
+        }
     }
-
-    public void withdraw(double amount)
-    {
-        balance = balance - amount;
-    }
-
-    public void addInterest()
-    {
-        balance = balance + balance * interest;
-    }
-
-    public double getBalance()
-    {
-        return balance;
-    }
-
 }
 
-public class BankingTransactions {
-    private final Lock lock = new ReentrantLock();
-    
-    static int accBal=0;
-    
-    public void customer1(int amt) {
-        lock.lock();
- 
-        try {
-            accBal += amt;
-            System.out.println("Adding $"+amt);
-        } finally {
-            lock.unlock();
-        }
-    }
- 
-    public int customer2(int amt) {
-        lock.lock();
+class Withdrawal implements Runnable {
 
-        try {
-            accBal += amt;
-            System.out.println("Adding $"+amt);
-        } finally {
-            lock.unlock();
-        }
-        return 0;
-    }
-    
-    public int customer3(int amt) {
-        lock.lock();
+    private Account acc;
+    private int amount;
 
-        try {
-            accBal += amt;
-            System.out.println("Adding $"+amt);
-        } finally {
-            lock.unlock();
-        }
-        return 0;
+    public Withdrawal() {
+        acc = null;
+        amount = 0;
     }
-    
-    public static void main(String[] args){
-        System.out.println("Banking transactions of a joint account:");
-        SavingsAccount account1 = new SavingsAccount(4653.8, 8);        
-        SavingsAccount account2 = new SavingsAccount(4765.8, 8);
-        Thread t1 = new Thread();
-        Thread t2 = new Thread();        
+
+    public Withdrawal(Account acc, int amount) {
+        this.acc = acc;
+        this.amount = amount;
+    }
+
+    public void run() {
+        int w;
+
+        for (int i = 0; i < 10; i++) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Balance before " + Thread.currentThread().getName() + " withdraw: " + acc.getBalance());
+            acc.withdraw(amount);
+            System.out.println("Balance after " + Thread.currentThread().getName() + " withdraw: " + acc.getBalance());
+
+        }
+    }
+}
+
+public class BankingTransaction {
+
+    static int n;
+
+    public static void main(String[] args) {
+        //Scanner scan = new Scanner(System.in);
+        //System.out.println("Enter maximum no. of withdrawals allowed!!!");
+        //n = scan.nextInt();
+        Account a1 = new Account(1000);
+        Withdrawal w = new Withdrawal(a1, 80);
+        Thread m1 = new Thread(w);
+        m1.setName("Trans1");
+
+        Thread m2 = new Thread(w);
+        m2.setName("Trans2");
+
+        m1.start();
+        m2.start();
     }
 }
