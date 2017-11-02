@@ -4,6 +4,7 @@ import java.util.Scanner;
 class Account {
 
     private int bal, newbal;
+    private int wlimit = 10, wcount=0;
 
     public Account(int b) {
         bal = b;
@@ -15,16 +16,22 @@ class Account {
 
     synchronized public void withdraw(int w) {
         int b = getBalance();
-        {
+        if(wcount <= wlimit){
             if (w <= b) {
                 bal = bal - w;
                 newbal = bal;
+                wcount++;
             } else {
-                System.out.println("NOT ENOUGH BALANCE\n" +
-                                   Thread.currentThread().getName() + 
-                                   " cannot withdraw money");
+                System.out.println("NOT ENOUGH BALANCE\n\t " + 
+                        Thread.currentThread().getName() + " cannot withdraw money");
                 System.exit(0);
             }
+        }
+        else {
+            System.out.println("Withdrawal limit reached (" + wcount + ") " +
+                    Thread.currentThread().getName()+
+                    " cannot withdraw money\n\ttry again later");
+            System.exit(0);
         }
     }
 }
@@ -61,21 +68,18 @@ class Withdrawal implements Runnable {
     }
 }
 
-public class BankingTransaction {
+public class BankingMonitor {
 
     static int n;
 
     public static void main(String[] args) {
-        //Scanner scan = new Scanner(System.in);
-        //System.out.println("Enter maximum no. of withdrawals allowed!!!");
-        //n = scan.nextInt();
         Account a1 = new Account(1000);
-        Withdrawal w = new Withdrawal(a1, 80);
+        Withdrawal w = new Withdrawal(a1, 85);
         Thread m1 = new Thread(w);
-        m1.setName("Trans1");
+        m1.setName("Transaction A");
 
         Thread m2 = new Thread(w);
-        m2.setName("Trans2");
+        m2.setName("Transaction B");
 
         m1.start();
         m2.start();
