@@ -21,7 +21,8 @@ class Account {
                 newbal = bal;
             } else {
                 System.out.println("NOT ENOUGH BALANCE\n" +
-                                   Thread.currentThread().getName() + " cannot withdraw money");
+                                   Thread.currentThread().getName() + 
+                                   " cannot withdraw money");
                 System.exit(0);
             }
         }
