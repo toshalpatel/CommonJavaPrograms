@@ -1,6 +1,8 @@
 package dag;
 import java.util.*;
 
+//INPUt - DAG, output - 3 Address code
+
 public class DAG {
     static Node a[] =new Node[10];
     static int k =0 ,R1=0, R2=0;
@@ -78,4 +80,8 @@ public class DAG {
                   
                    System.out.println("SUB "+a[i].left.value+" "+a[i].right.value);
                    
-               }}}}}
+               }
+           }
+        }
+    }
+}
