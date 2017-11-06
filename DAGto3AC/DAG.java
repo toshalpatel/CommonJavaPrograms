@@ -20,6 +20,7 @@ public class DAG {
    
     public static void main(String args[])
     {
+        //input the nodes of DAG
         Node n1 = new Node("a",null,null);
         Node n2 = new Node("b",null,null);
         Node n3 = new Node("add t1",n1,n2); 
