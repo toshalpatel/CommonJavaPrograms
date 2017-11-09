@@ -22,7 +22,7 @@ public class Proc extends Thread {
              //   System.out.println("Request[" + i + "] = " + request[i]);
                 System.out.println("Process " + id + " sent a reply to " + i);
                 if(request[i] == n-1)
-                    System.out.println("Process " + i + " executing cs..!!");
+                    System.out.println("Process " + i + " executing cs");
                
             }
              System.out.println("Timestamp of process  "+i+" is "+ts[i]);
@@ -38,7 +38,7 @@ public class RicartAgrawalaNew {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         
-        System.out.println("Enter the total number of processes..!!");
+        System.out.println("Enter the total number of processes");
         
         Proc.n = in.nextInt();
         
@@ -51,7 +51,7 @@ public class RicartAgrawalaNew {
         for(int i=0;i<Proc.n;i++)
         {
             ps[i] = new Proc(i);
-            System.out.println("Process " + i + " You want to enter cs..?");
+            System.out.println("Process " + i + " You want to enter cs");
             int x = in.nextInt();
             System.out.println("");
             
@@ -78,15 +78,15 @@ public class RicartAgrawalaNew {
 /*
 Output:-
 
-Enter the total number of processes..!!
+Enter the total number of processes
 3
-Process 0 You want to enter cs..?
+Process 0 You want to enter cs
 1
 
-Process 1 You want to enter cs..?
+Process 1 You want to enter cs
 0
 
-Process 2 You want to enter cs..?
+Process 2 You want to enter cs
 1
 
 Process 0 sent a request to all.
@@ -99,7 +99,7 @@ Timestamp of process  1 is 999
 Timestamp of process  2 is 999
 Process 2 sent a request to all.
 Process 2 sent a reply to 0
-Process 0 executing cs..!!
+Process 0 executing cs
 Timestamp of process  0 is 0
 Timestamp of process  1 is 999
 Timestamp of process  2 is 1
